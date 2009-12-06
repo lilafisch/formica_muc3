@@ -28,7 +28,6 @@ bool hasfood(void);
 
 void food_init(void);
 
-#define NOFOOD 1000
 #define FLED (1<<3)
 
 /* Turn the food leds on/off */
