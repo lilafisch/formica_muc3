@@ -10,14 +10,21 @@ mood_t tempmood = MOOD_NONE;
 
 void leds_flash(uint8_t colour)
 {
-	uint8_t prev_led_state = 0;
+	uint8_t prev_state = 0;
 
-	prev_led_state = P4OUT & 0x06;
-	P4OUT &= ~(0x06);
-	P4OUT |= (colour & 0x06);
+	prev_state = P4OUT & (RED | GREEN);
+
+	leds_off();
+
+	colour &= (RED | GREEN);
+
+	/* LEDs are active low */
+	P4OUT ^= colour;
 	time_wait(FLASHTIME);
-	P4OUT &= ~(0x06);
-	P4OUT |= prev_led_state;
+
+	leds_off();
+	prev_state ^= (RED | GREEN);
+	P4OUT ^= prev_state;
 }
 
 void leds_set(uint8_t colour)
