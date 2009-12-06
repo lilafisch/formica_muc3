@@ -53,4 +53,6 @@ extern mood_t tempmood;
 #define leds_green_on() do { P4OUT &= ~GREEN; } while (0)
 #define leds_green_off() do { P4OUT |= GREEN; } while (0)
 
+#define leds_off() do { P4OUT |= (RED | GREEN); } while (0)
+
 #endif	/* __LEDS_H */
