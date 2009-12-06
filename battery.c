@@ -1,5 +1,5 @@
 /*  Copyright 2008 Stephen English, Jeffrey Gough, Alexis Johnson, 
-        Robert Spanton and Joanna A. Sun.
+    Robert Spanton and Joanna A. Sun.
 
     This file is part of the Formica robot firmware.
 
@@ -34,31 +34,30 @@ bool pg_inverted = FALSE;
 
 bool battery_low( void )
 {
-  /* Low = 3.5V. 1.75 out of divider, 1.75/2.5*1023 = 716 */
-  /* tweaked slightly by experiment */
-  return battval < 721 ? TRUE : FALSE;
+	/* Low = 3.5V. 1.75 out of divider, 1.75/2.5*1023 = 716 */
+	/* tweaked slightly by experiment */
+	return battval < 721 ? TRUE : FALSE;
 }
 
 bool battery_critical( void )
 {
-  /* Low = 3.3V. 1.65 out of divider, 1.65/2.5*1023 = 675 */
-  /* tweaked slightly by experiment */
-  return battval < 684 ? TRUE : FALSE;
+	/* Low = 3.3V. 1.65 out of divider, 1.65/2.5*1023 = 675 */
+	/* tweaked slightly by experiment */
+	return battval < 684 ? TRUE : FALSE;
 }
 
 void battery_init( void )
 {
-  P3DIR &= ~(PG | STAT1 | STAT2);
-  P3REN |= (PG | STAT1 | STAT2);
-  P3OUT |= (PG | STAT1 | STAT2);
+	P3DIR &= ~(PG | STAT1 | STAT2);
+	P3REN |= (PG | STAT1 | STAT2);
+	P3OUT |= (PG | STAT1 | STAT2);
 
-  /* some robots have a hardware fault; !PG signal is inverted  */
-  /* due to damaged charge controller! So at boot up (not connected */
-  /* to charger) measure the !PG state. */
+	/* some robots have a hardware fault; !PG signal is inverted  */
+	/* due to damaged charge controller! So at boot up (not connected */
+	/* to charger) measure the !PG state. */
 
-  if ( !get_pg() )
-    pg_inverted = TRUE;
-  
+	if ( !get_pg() )
+		pg_inverted = TRUE;
 }
 
 bool battery_charge_complete( void )
@@ -81,7 +80,7 @@ bool battery_charge_in_progress( void )
 
 bool battery_charge_standby( void )
 {
-  /* stat1 = high, stat2 = high */
+	/* stat1 = high, stat2 = high */
 	if( ( get_stat1()) && get_stat2() )
 		return TRUE;
 	else
@@ -90,15 +89,15 @@ bool battery_charge_standby( void )
 
 bool battery_power_good( void )
 {
-  bool retval = FALSE;
+	bool retval = FALSE;
   
-  if( !get_pg() )
-    retval  =  TRUE;
-  else
-    retval = FALSE;
+	if( !get_pg() )
+		retval  =  TRUE;
+	else
+		retval = FALSE;
   
-  if (pg_inverted)
-    retval = !retval;
+	if (pg_inverted)
+		retval = !retval;
 
-  return retval;
+	return retval;
 }
