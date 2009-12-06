@@ -17,7 +17,7 @@
 # along with the Formica robot firmware.  
 # If not, see <http://www.gnu.org/licenses/>.
 
-ARCH=msp430x2254
+ARCH=msp430x2274
 CFLAGS := -mmcu=$(ARCH) -g -Wall -Os
 CFLAGS += -mendup-at=main
 LDFLAGS :=
