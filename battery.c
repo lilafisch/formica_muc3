@@ -30,7 +30,6 @@
 #define get_stat2() (P3IN & STAT2)
 
 uint16_t battval = 65000;
-bool pg_inverted = FALSE;
 
 bool battery_low( void )
 {
@@ -55,9 +54,6 @@ void battery_init( void )
 	/* some robots have a hardware fault; !PG signal is inverted  */
 	/* due to damaged charge controller! So at boot up (not connected */
 	/* to charger) measure the !PG state. */
-
-	if ( !get_pg() )
-		pg_inverted = TRUE;
 }
 
 bool battery_charge_complete( void )
@@ -96,8 +92,5 @@ bool battery_power_good( void )
 	else
 		retval = FALSE;
   
-	if (pg_inverted)
-		retval = !retval;
-
 	return retval;
 }

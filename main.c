@@ -58,12 +58,6 @@ int main( void )
 
 	random_walk_disable();
 	
-	time_wait(8);
-	if (pg_inverted)
-	  leds_flash(RED);
-	else
-	  leds_flash(GREEN);
-	
 	time_wait(5);
 
 	/* start charging if touching charger within 1 second */

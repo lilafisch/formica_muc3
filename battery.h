@@ -32,6 +32,5 @@ bool battery_critical( void );
 bool battery_low( void );
 
 extern uint16_t battval;
-extern bool pg_inverted;
 
 #endif	/* __BATTERY_H */
