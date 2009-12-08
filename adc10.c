@@ -84,7 +84,6 @@ void adc10_init( void )
 		| ADC10SSEL_MCLK
 		| CONSEQ_0; 	/* Single channel single conversion */
 		
-
 	/* PD1, PD2, PD3 and FOOD are on P2.1, P2.2, P2.3 and P2.4 respectively */
 	/* P2.1, P2.2, P2.3, P2.4 (page 60 of the MSP430F2234 datasheet) */
 	/* RX is on P3.7 (A7) */
@@ -96,7 +95,6 @@ void adc10_init( void )
 	
 	adc10_set_channel(PD1_CHANNEL);
 }
-
 
 void adc10_grab( void )
 {
