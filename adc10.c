@@ -59,6 +59,10 @@ static enum {
 #define FOOD_CHANNEL 4
 #define BATT_CHANNEL 15
 
+/* The ADC10AE0 value: Which pins are analogue inputs */
+/* PD1, PD2, PD3 and FOOD are on P2.1, P2.2, P2.3 and P2.4 respectively */
+/* P2.1, P2.2, P2.3, P2.4 (page 60 of the MSP430F2234 datasheet) */
+/* RX is on P3.7 (A7) */
 #define CHANNEL_CONFIG (1<<1) | (1<<2) | (1<<3) | (1<<4) | (1<<7)
 
 #define BATT_INTERVAL 10
@@ -84,9 +88,7 @@ void adc10_init( void )
 		| ADC10SSEL_MCLK
 		| CONSEQ_0; 	/* Single channel single conversion */
 		
-	/* PD1, PD2, PD3 and FOOD are on P2.1, P2.2, P2.3 and P2.4 respectively */
-	/* P2.1, P2.2, P2.3, P2.4 (page 60 of the MSP430F2234 datasheet) */
-	/* RX is on P3.7 (A7) */
+	/* Set up the pins as analogue inputs */
 	ADC10AE0 = CHANNEL_CONFIG;
 	/* Enable A15 (Batt) */
 	ADC10AE1 = 0x80;
