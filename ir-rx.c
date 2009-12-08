@@ -91,7 +91,7 @@ void ir_receive_init( void )
 	P2OUT &= 0xf0;
 
 	/*** Bias resistor config ***/
-	bias_use2();
+	bias_comms();
 
 	decoder_reset();
 

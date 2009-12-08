@@ -33,7 +33,7 @@
 
 void adc10_dis()
 {
-	bias_use2();			/* back to IR reception bias */
+	bias_comms();			/* back to IR reception bias */
 	while ( ADC10CTL1 & ADC10BUSY );
 	ADC10CTL0 &= ~ENC;
 }
@@ -104,7 +104,7 @@ void adc10_grab( void )
 		fled_on();
 	//else if( ir_transmit_is_enabled() )
 	//{
-	bias_use1();
+	bias_bearing();
 	
 	/* Start the conversion: */
 	ADC10CTL0 |= (ADC10SC | ENC);
