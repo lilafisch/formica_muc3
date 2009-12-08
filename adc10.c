@@ -71,12 +71,10 @@ void adc10_init( void )
 		/* ADC10SR = 0 -- Support 200 ksps sampling (TODO: maybe this can be set) */
 		/* REFOUT = 0 -- Reference output off */
 		/* REFBURST = 0 -- Reference buffer on continuously (TODO) */
-		//	| MSC		/* Move onto the next conversion after the previous*/
 		| REF2_5V
 		| REFON         /* Use 2.5V reference */
 		| ADC10ON	/* Peripheral on */
 	        | ADC10IE;       /* Interrupt enabled */
-	//  | ENC; 		/* ADC Enabled */
 
 	ADC10CTL1 = /* Select the channel later... */
 		SHS_0		/* ADC10SC is the sample-and-hold selector */
