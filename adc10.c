@@ -175,8 +175,8 @@ interrupt (ADC10_VECTOR) adc10_isr( void )
 			/* Remove clock divide */
 			ADC10CTL1 &= ~ADC10DIV_7;
 			ADC10CTL0 |= SREF_1; /* Use 2.5V Reference */
-			ADC10CTL0 &= ~ADC10SHT_DIV64; /* Go from divide by 64 */
-			ADC10CTL0 |= ADC10SHT_DIV4; /* to divide by 4 */
+			/* Divide by 4 */
+			ADC10CTL0 = (ADC10CTL0 & (~ADC10SHT_DIV64)) | ADC10SHT_DIV4;
 		}
 		else
 		{
