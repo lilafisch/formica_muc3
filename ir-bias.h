@@ -25,12 +25,12 @@
 #define BIAS2 (1<<7)
 
 /* Must be called before ir-receive is initialised */
-#define bias_init() do { P2DIR &= ~(BIAS1|BIAS2); P2SEL &= ~(BIAS1|BIAS2); } while (0)
+#define ir_bias_init() do { P2DIR &= ~(BIAS1|BIAS2); P2SEL &= ~(BIAS1|BIAS2); } while (0)
 
 /* Use bias resistor 1 - this is (high sensitivity?) for daylight bearing */
-#define bias_bearing() do { P2DIR &= ~(BIAS1|BIAS2); P2OUT |= BIAS1; P2DIR |= BIAS1; } while (0)
+#define ir_bias_bearing() do { P2DIR &= ~(BIAS1|BIAS2); P2OUT |= BIAS1; P2DIR |= BIAS1; } while (0)
 
 /* Use bias resistor 2  - this is (low sensitivity?) for IR reception*/
-#define bias_comms() do { P2DIR &= ~(BIAS1|BIAS2); P2OUT |= BIAS2; P2DIR |= BIAS2; } while (0)
+#define ir_bias_comms() do { P2DIR &= ~(BIAS1|BIAS2); P2OUT |= BIAS2; P2DIR |= BIAS2; } while (0)
 
 #endif	/* __IR_BIAS_H */

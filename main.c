@@ -177,7 +177,7 @@ void init(void)
 	
 	flash_init();
 	opamp1_init();
-	bias_init();
+	ir_bias_init();
 
 	adc10_init(); /* The order here matters. This configures the ADC */
 	random_init(); /* Grab some random data */
