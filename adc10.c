@@ -172,8 +172,8 @@ interrupt (ADC10_VECTOR) adc10_isr( void )
 
 			/* Use ACLK */
 			ADC10CTL1 = (ADC10CTL1 & (~ADC10SSEL_SMCLK)) | ADC10SSEL_ACLK;
-			ADC10CTL1 &= ~ADC10DIV_7;      /* Remove clock divide */
-			ADC10CTL1 |= ADC10DIV_0;
+			/* Remove clock divide */
+			ADC10CTL1 &= ~ADC10DIV_7;
 			ADC10CTL0 |= SREF_1; /* Use 2.5V Reference */
 			ADC10CTL0 &= ~ADC10SHT_DIV64; /* Go from divide by 64 */
 			ADC10CTL0 |= ADC10SHT_DIV4; /* to divide by 4 */
