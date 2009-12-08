@@ -33,6 +33,4 @@
 /* Use bias resistor 2  - this is (low sensitivity?) for IR reception*/
 #define bias_use2() do { P2DIR &= ~(BIAS1|BIAS2); P2OUT |= BIAS2; P2DIR |= BIAS2; } while (0)
 
-//#define bias_use2() bias_use1();
-
 #endif	/* __IR_BIAS_H */
