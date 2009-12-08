@@ -21,13 +21,13 @@
 #include "stdint.h"
 #include "types.h"
 
-#define PG (1<<3)
-#define STAT1 (1<<1)
-#define STAT2 (1<<2)
+#define PG (1<<0)		/* P2.0 */
+#define STAT1 (1<<1)		/* P4.1 */
+#define STAT2 (1<<2)		/* P4.2 */
 
-#define get_pg() ( P3IN & PG )
-#define get_stat1() (P3IN & STAT1)
-#define get_stat2() (P3IN & STAT2)
+#define get_pg() ( P2IN & PG )
+#define get_stat1() (P4IN & STAT1)
+#define get_stat2() (P4IN & STAT2)
 
 uint16_t battval = 65000;
 
@@ -47,9 +47,14 @@ bool battery_critical( void )
 
 void battery_init( void )
 {
-	P3DIR &= ~(PG | STAT1 | STAT2);
-	P3REN |= (PG | STAT1 | STAT2);
-	P3OUT |= (PG | STAT1 | STAT2);
+	P4DIR &= ~(STAT1 | STAT2);
+	P2DIR &= ~PG;
+
+	P4REN |= STAT1 | STAT2;
+	P2REN |= PG;
+
+	P4OUT |= STAT1 | STAT2;
+	P2OUT |= PG;
 
 	/* some robots have a hardware fault; !PG signal is inverted  */
 	/* due to damaged charge controller! So at boot up (not connected */
