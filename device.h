@@ -25,8 +25,6 @@
 #define __msp430_have_opamp_rail_to_rail
 #define __msp430_have_opamp_output_select
 
-
-
-#include <msp430x22x4.h>
+#include <io.h>
 
 #endif  /* __DEVICE_H */
