@@ -169,8 +169,9 @@ interrupt (ADC10_VECTOR) adc10_isr( void )
 
 			/* disable other channels to prevent coupling of photocurrents */
 			ADC10AE0 = 0;
-			ADC10CTL1 &= ~ADC10SSEL_SMCLK; /* Goto Aux Clock */
-			ADC10CTL1 |= ADC10SSEL_ACLK;   /* 12Khz */
+
+			/* Use ACLK */
+			ADC10CTL1 = (ADC10CTL1 & (~ADC10SSEL_SMCLK)) | ADC10SSEL_ACLK;
 			ADC10CTL1 &= ~ADC10DIV_7;      /* Remove clock divide */
 			ADC10CTL1 |= ADC10DIV_0;
 			ADC10CTL0 |= SREF_1; /* Use 2.5V Reference */
