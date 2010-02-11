@@ -29,8 +29,8 @@ void leds_flash(uint8_t colour)
 
 void leds_set(uint8_t colour)
 {
-	P4OUT &= ~(0x06);
-	P4OUT |= (colour & 0x06);
+	P4OUT |= ORANGE;
+	P4OUT &= ~(colour & ORANGE);
 }
 
 void leds_update_mood()
