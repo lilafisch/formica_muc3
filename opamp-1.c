@@ -39,4 +39,9 @@ void opamp1_init( void )
 	/* RX is connected to P3.7 (OA1I2) */
 	/* See page 70 of the MSP430F2234 datasheet */
 	ADC10AE |= 0x80;
+
+	/* RX is also connected to P2.0 */
+	/* We don't care about this pin, but to reduce current, we'll route it to A0 */
+	/* Page 60 of the MSP430F2234 datasheet */
+	ADC10AE |= 1;
 }
