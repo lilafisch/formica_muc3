@@ -24,12 +24,12 @@ void leds_flash(uint8_t colour);
 void leds_set(uint8_t colour);
 void leds_update_mood();
 
-#define RED (1<<6)
-#define GREEN (1<<7)
-#define ORANGE (RED | GREEN)
-#define NONE (0)
+#define leds_init() do { P4OUT &= ~6; P4DIR |= 6; } while (0)
 
-#define leds_init() do { P4OUT |= RED | GREEN; P4DIR |= (RED | GREEN); } while (0)
+#define RED (2)
+#define GREEN (4)
+#define ORANGE (6)
+#define NONE (0)
 
 typedef enum {
 	MOOD_NONE,
@@ -47,11 +47,11 @@ typedef enum {
 extern mood_t mood;
 extern mood_t tempmood;
 
-#define leds_red_on() do { P4OUT &= ~RED; } while (0)
-#define leds_red_off() do { P4OUT |= RED; } while (0)
+#define leds_red_on() do { P4OUT |= RED; } while (0)
+#define leds_red_off() do { P4OUT &= ~RED; } while (0)
 
-#define leds_green_on() do { P4OUT &= ~GREEN; } while (0)
-#define leds_green_off() do { P4OUT |= GREEN; } while (0)
+#define leds_green_on() do { P4OUT |= GREEN; } while (0)
+#define leds_green_off() do { P4OUT &= ~GREEN; } while (0)
 
 #define leds_off() do { P4OUT |= (RED | GREEN); } while (0)
 
