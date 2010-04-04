@@ -57,7 +57,7 @@ static enum {
 #define PD2_CHANNEL 2
 #define PD3_CHANNEL 3
 #define FOOD_CHANNEL 4
-#define BATT_CHANNEL 14
+#define BATT_CHANNEL 15
 
 /* The ADC10AE0 value: Which pins are analogue inputs */
 /* PD1, PD2, PD3 and FOOD are on P2.1, P2.2, P2.3 and P2.4 respectively */
@@ -90,8 +90,8 @@ void adc10_init( void )
 		
 	/* Set up the pins as analogue inputs */
 	ADC10AE0 = CHANNEL_CONFIG;
-	/* Enable A14 (Batt) */
-	ADC10AE1 = 1<<6;
+	/* Enable A15 (Batt) */
+	ADC10AE1 = 0x80;
 
 	ADC10DTC0 |= ADC10CT; /* DTC Not used. This makes it continuous */
 	
